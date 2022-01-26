@@ -1,0 +1,11 @@
+- wisdom-alt.c is the vulnerable program 
+- wisdom-alt: $ gcc -fno-stack-protector -ggdb -m32 wisdom-alt.c -o wisdom-alt
+
+The program reads data from the stdin and writes to stdout. Typing the number 1 allows you to "receive wisdom" and typing 2 allows you to "add wisdom".
+This program is vulnerable to a buffer overflow.
+
+To input binary data to the program, use the following command: $./runbin.sh
+
+To exploit the program, you will have to enter sequences of binary bytes that contain addresses, which are 4-byte (i.e., 32-bit) words on the VM. The x86 architecture is "little-endian", meaning that the bytes in a word are stored from least significant to most significant. That means that the hexadecimal address 0xabcdef00 would be entered as individual bytes in reverse order, i.e., \x00\xef\xcd\xab.
+
+To attach gdb to wisdom-alt, you should first invoke ./runbin.sh, and then, in a separate terminal, from the project/1 directory invoke the following line: $ gdb -p `pgrep wisdom-alt`

