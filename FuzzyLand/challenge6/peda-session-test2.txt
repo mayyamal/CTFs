@@ -1,0 +1,7 @@
+break *0x0804840b
+break *0xffffcda4
+break *0xffffcda4
+break *0x8048429
+break *0xffffcda4
+break *0xffffcdc6
+

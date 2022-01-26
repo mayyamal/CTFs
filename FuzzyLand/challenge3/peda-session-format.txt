@@ -1,0 +1,5 @@
+break main
+break *0x8048590
+break *0x80485a4
+break *0x80485d9
+
