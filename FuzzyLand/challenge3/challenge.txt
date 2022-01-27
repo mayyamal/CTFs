@@ -1,0 +1,2 @@
+Find a format string to extract the binary’s secret
+• Your format string has to extract the secret key (<THE FLAG!> in the sample code)

@@ -1,0 +1,6 @@
+Write a shellcode which outputs SASD2017
+• The shellcode must be x86 32bit and ≤ 512 bytes
+• It must be alphanumeric, i.e., only contain A-Z, a-z, and 0-9
+• It might output anything else as well, as long as “SASD2017” is in the output
+• It is also allowed to crash or hang afterwards
+• We provide a “framework” to execute your shellcode

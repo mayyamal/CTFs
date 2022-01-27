@@ -1,0 +1,8 @@
+Change the randomization of the code segment
+• You should generate two binaries with ASLR enabled
+• One binary should have randomization for stack, heap, and code
+• The other binary should only have randomization for stack and
+heap, but not for code
+• Both binaries must run for at least 5 seconds (e.g., sleep(5);
+before return) but not longer than 10 seconds
+• Test system is Ubuntu 16.04.3 LTS, kernel 4.4.0-93

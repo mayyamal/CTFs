@@ -1,0 +1,5 @@
+Write an ELF binary which outputs your immatriculation number and exits
+• Size of the binary must be ≤ 100 bytes
+• Binary must be a 32-bit or 64-bit ELF binary which runs in the reference VM
+• Binary does not have to be 100% valid as speciﬁed in the standard
+• Use whatever tool(s) you like, source code is not required

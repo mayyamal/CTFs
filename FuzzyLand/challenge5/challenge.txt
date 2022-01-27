@@ -1,0 +1,6 @@
+Figure out how to run the mysterious binary and get the ﬂag
+• Hint: It is neither a Linux nor a Windows binary
+• If you manage to run it, it will ask for a PIN
+• Entering the correct PIN reveals the ﬂag
+• Use a disassembler (e.g., radare2)
+• Hint: Don’t look directly for the ﬂag, look for the PIN
