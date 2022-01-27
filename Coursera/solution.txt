@@ -15,8 +15,7 @@ Since the executable is compiled without aslr, we can try to enter a value that 
 0xbffff534 - 0x804a0d4 = 0xb7fb540
 Since `ptrs` is a function pointer, it is indexed in 4B, so 0xb7fb540 / 4 = 0x2dfed518 (771675416 in decimal). And that is the vaue we should enter instead of a valid Selection.
 
-
-1. Another exploit is to overwrite the buffer `wis` in function `put_wisdom`, while executing ` r = (int)gets(wis);` when selecting 2 (Add wisdom)
+2. Another exploit is to overwrite the buffer `wis` in function `put_wisdom`, while executing ` r = (int)gets(wis);` when selecting 2 (Add wisdom)
 
 The goal is to execute the function write_secret.
 - Using gdb we can see it address: 
